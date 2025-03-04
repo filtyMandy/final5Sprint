@@ -31,8 +31,7 @@ const (
 //
 // Создайте функцию ниже.
 func WalkingSpentCalories(steps int, weight, height float64, duration time.Duration) float64 {
-	s := MeanSpeed(steps, duration)
-	return ((walkingCaloriesWeightMultiplier * weight) + (s*s/height)*walkingSpeedHeightMultiplier) * duration.Hours() * minInH
+	return ((walkingCaloriesWeightMultiplier * weight) + (MeanSpeed(steps, duration)*MeanSpeed(steps, duration)/height)*walkingSpeedHeightMultiplier) * duration.Hours() * minInH
 }
 
 // Константы для расчета калорий, расходуемых при беге.

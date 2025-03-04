@@ -25,10 +25,16 @@ func (t *Training) Parse(datastring string) (err error) {
 	}
 
 	t.Steps, err = strconv.Atoi(parts[0])
+	if err != nil {
+		return fmt.Errorf("conversion error(steps): %w\ndata: %s", err, datastring)
+	}
 
 	t.TrainingType = parts[1]
 
 	t.Duration, err = time.ParseDuration(parts[2])
+	if err != nil {
+		return fmt.Errorf("conversion error(duration): %w\ndata: %s", err, datastring)
+	}
 
 	return
 }
